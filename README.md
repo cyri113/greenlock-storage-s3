@@ -36,6 +36,22 @@ var greenlock = Greenlock.create({
 
 ```
 
+## Testing
+
+The strategy is tested against the greenlock-store-test [https://git.coolaj86.com/coolaj86/greenlock-store-test.js]
+
+To run the tests yourself, create a `.env` file with the following
+
+```
+// .env file
+AWS_ACCESS_KEY_ID=abc           // Your accessKeyId
+AWS_SECRET_ACCESS_KEY=abc       // Your secretAccessKey
+AWS_BUCKET_REGION=abc           // Your regionName
+AWS_BUCKET_NAME=abc             // Your bucketName
+```
+
+Run the following command: `npm run clean && npm run test && npm run clean`
+
 ## License
 
 ISC
