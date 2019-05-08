@@ -4,7 +4,8 @@
   "description": "S3 backed storage strategy for greenlock-express.js (and greenlock.js)",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test.js"
+    "test": "node ./test.js",
+    "clean": "node ./clean.js"
   },
   "repository": {
     "type": "git",
