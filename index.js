@@ -1,7 +1,7 @@
-var path = require('path');
-var Promise = require('bluebird')
+var path = require("path");
+var Promise = require("bluebird");
 
-const AWS = require('aws-sdk');
+const AWS = require("aws-sdk");
 AWS.config.setPromisesDependency(Promise);
 
 const defaultOptions = {
@@ -9,14 +9,14 @@ const defaultOptions = {
     , secretAccessKey: null
     , bucketName: null
     , bucketRegion: null
-    , accountsDir: 'accounts/'
-    , configDir: 'acme/'
+    , accountsDir: "accounts/"
+    , configDir: "acme/"
 }
 
-const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 
-const pathHelper = require('./lib/pathHelper');
-const fileNames = require('./lib/fileNames');
+const pathHelper = require("./lib/pathHelper");
+const fileNames = require("./lib/fileNames");
 
 module.exports.create = (createOptions) => {
 
@@ -39,30 +39,30 @@ module.exports.create = (createOptions) => {
     const handlers = {
         certificates: {
             check: (opts) => {
-                return require('./lib/certificates/check').check(opts, options, s3);
+                return require("./lib/certificates/check").check(opts, options, s3);
             },
             checkKeypair: (opts) => {
-                return require('./lib/certificates/checkKeypair').checkKeypair(opts, options, s3);
+                return require("./lib/certificates/checkKeypair").checkKeypair(opts, options, s3);
             },
             setKeypair: (opts) => {
-                return require('./lib/certificates/setKeypair').setKeypair(opts, options, s3);
+                return require("./lib/certificates/setKeypair").setKeypair(opts, options, s3);
             },
             set: (opts) => {
-                return require('./lib/certificates/set').set(opts, options, s3);
+                return require("./lib/certificates/set").set(opts, options, s3);
             }
         },
         accounts: {
             check: (opts) => {
-                return require('./lib/accounts/check').check(opts, options, s3);
+                return require("./lib/accounts/check").check(opts, options, s3);
             },
             checkKeypair: (opts) => {
-                return require('./lib/accounts/checkKeypair').checkKeypair(opts, options, s3);
+                return require("./lib/accounts/checkKeypair").checkKeypair(opts, options, s3);
             },
             setKeypair: (opts) => {
-                return require('./lib/accounts/setKeypair').setKeypair(opts, options, s3);
+                return require("./lib/accounts/setKeypair").setKeypair(opts, options, s3);
             },
             set: (opts) => {
-                return require('./lib/accounts/set').set(opts, options, s3);
+                return require("./lib/accounts/set").set(opts, options, s3);
             }
         }
     }
