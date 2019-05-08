@@ -16,10 +16,10 @@ You will need a s3 bucket and the corresponding credentials.
 ```javascript
 
 let store = require('greenlock-storage-s3').create({
-    accessKeyId: accessKeyId                // Your accessKeyId
-    , secretAccessKey: secretAccessKey      // Your secretAccessKey
-    , regionName: regionName                // Your regionName
-    , bucketName: bucketName                // Your bucketName
+    accessKeyId: accessKeyId                // Replace with your accessKeyId
+    , secretAccessKey: secretAccessKey      // Replace with your secretAccessKey
+    , regionName: regionName                // Replace with your regionName
+    , bucketName: bucketName                // Replace with your bucketName
     , configDir: 'acme/'                    // Recommended
     , accountsDir: 'accounts/'              // Recommended
     , debug: true                           // Debug
@@ -44,13 +44,16 @@ To run the tests yourself, create a `.env` file with the following
 
 ```
 // .env file
-AWS_ACCESS_KEY_ID=abc           // Your accessKeyId
-AWS_SECRET_ACCESS_KEY=abc       // Your secretAccessKey
-AWS_BUCKET_REGION=abc           // Your regionName
-AWS_BUCKET_NAME=abc             // Your bucketName
+AWS_ACCESS_KEY_ID=abc           // Replace with your accessKeyId
+AWS_SECRET_ACCESS_KEY=abc       // Replace with your secretAccessKey
+AWS_BUCKET_REGION=abc           // Replace with your regionName
+AWS_BUCKET_NAME=abc             // Replace with your bucketName
 ```
 
-Run the following command: `npm run clean && npm run test && npm run clean`
+Run the following command: 
+```console
+$ npm run clean && npm run test && npm run clean
+```
 
 ## License
 
