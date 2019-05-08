@@ -16,11 +16,12 @@ let store = require('./index').create({
     , bucketName: bucketName
     , configDir: 'acme/'
     , accountsDir: 'accounts/'
+    , debug: true
 });
 
 // All of these tests can pass locally, standalone without any ACME integration.
 tester.test(store).then(() => {
-  console.info("Test successfully completed");
+  console.info("Test completed successfully.");
 }).catch((err) => {
     console.error(err.message);
     throw err;
