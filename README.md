@@ -46,7 +46,7 @@ The strategy is tested against the [greenlock-store-test](https://git.coolaj86.c
 
 To run the tests yourself, create a `.env` file with the following
 
-```
+```console
 // .env file
 AWS_ACCESS_KEY_ID=abc           // Replace with your accessKeyId
 AWS_SECRET_ACCESS_KEY=abc       // Replace with your secretAccessKey

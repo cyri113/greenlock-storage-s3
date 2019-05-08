@@ -5,15 +5,15 @@ require("dotenv").config();
 let accessKeyId = process.env.AWS_ACCESS_KEY_ID
     , secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
     , regionName = process.env.AWS_BUCKET_REGION
-    , bucketName = process.env.AWS_BUCKET_NAME
+    , bucketName = process.env.AWS_BUCKET_NAME;
 
 let tester = require("greenlock-store-test");
 
 let store = require("./index").create({
-    accessKeyId: accessKeyId
-    , secretAccessKey: secretAccessKey
-    , regionName: regionName
-    , bucketName: bucketName
+    accessKeyId
+    , secretAccessKey
+    , regionName
+    , bucketName
     , configDir: "acme/"
     , accountsDir: "accounts/"
     , debug: true

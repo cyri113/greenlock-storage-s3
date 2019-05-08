@@ -5,15 +5,15 @@ require("dotenv").config();
 let accessKeyId = process.env.AWS_ACCESS_KEY_ID
     , secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
     , regionName = process.env.AWS_BUCKET_REGION
-    , bucketName = process.env.AWS_BUCKET_NAME
+    , bucketName = process.env.AWS_BUCKET_NAME;
 
 var AWS = require("aws-sdk");
 AWS.config.setPromisesDependency(Promise);
 AWS.config.update({
     region: regionName
     , credentials: new AWS.Credentials({
-        accessKeyId: accessKeyId
-        , secretAccessKey: secretAccessKey
+        accessKeyId
+        , secretAccessKey
     })
 });
 
