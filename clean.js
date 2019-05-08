@@ -1,4 +1,5 @@
 console.log('Cleaning the project.');
+console.log('Cleaning the project.');
 
 require('dotenv').config();
 
