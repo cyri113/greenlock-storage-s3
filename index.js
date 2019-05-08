@@ -35,6 +35,8 @@ const defaultOptions = {
 
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 
+const pathHelper = require('./pathHelper');
+
 module.exports.create = (createOptions) => {
 
     const options = Object.assign({}, defaultOptions, createOptions);
@@ -60,9 +62,9 @@ module.exports.create = (createOptions) => {
                 var id = opts.certificate && opts.certificate.id || opts.subject;
                 console.log('certificates.check for', opts.subject);
 
-                var privkeyPath = certificatesPath(options, id, fileNames.privkey.pem);
-                var certPath = certificatesPath(options, id, fileNames.cert);
-                var chainPath = certificatesPath(options, id, fileNames.chain);
+                var privkeyPath = pathHelper.certificatesPath(options, id, fileNames.privkey.pem);
+                var certPath = pathHelper.certificatesPath(options, id, fileNames.cert);
+                var chainPath = pathHelper.certificatesPath(options, id, fileNames.chain);
 
                 return Promise.all([
                     s3.getObject({ Key: privkeyPath, Bucket: options.bucketName }).promise().then((data) => {
@@ -104,8 +106,8 @@ module.exports.create = (createOptions) => {
 
                 id = opts.certificate.kid || opts.certificate.id || opts.subject;
 
-                pemKeyPath = certificatesPath(options, id, fileNames.privkey.pem);
-                jwkKeyPath = certificatesPath(options, id, fileNames.privkey.jwk);
+                pemKeyPath = pathHelper.certificatesPath(options, id, fileNames.privkey.pem);
+                jwkKeyPath = pathHelper.certificatesPath(options, id, fileNames.privkey.jwk);
 
                 return s3.getObject({ Key: pemKeyPath, Bucket: options.bucketName }).promise().then((data) => {
                     console.log('Successfully retrieved certificate PEM keypair.');
@@ -122,8 +124,8 @@ module.exports.create = (createOptions) => {
                 id = opts.certificate.kid || opts.certificate.id || opts.subject;
                 console.log('certificates.setKeypair for', id);
 
-                pemKeyPath = certificatesPath(options, id, fileNames.privkey.pem);
-                jwkKeyPath = certificatesPath(options, id, fileNames.privkey.jwk);
+                pemKeyPath = pathHelper.certificatesPath(options, id, fileNames.privkey.pem);
+                jwkKeyPath = pathHelper.certificatesPath(options, id, fileNames.privkey.jwk);
 
                 return s3.putObject({ Key: pemKeyPath, Body: opts.keypair.privateKeyPem, Bucket: options.bucketName }).promise().then((data) => {
                     console.log('Successfully set the PEM privateKey.');
@@ -142,10 +144,10 @@ module.exports.create = (createOptions) => {
                     , privkey: opts.pems.privkey
                 }
 
-                var certPath = certificatesPath(options, opts.subject, fileNames.cert);
-                var chainPath = certificatesPath(options, opts.subject, fileNames.chain);
-                var fullchainPath = certificatesPath(options, opts.subject, fileNames.fullchain);
-                var bundlePath = certificatesPath(options, opts.subject, fileNames.bundle);
+                var certPath = pathHelper.certificatesPath(options, opts.subject, fileNames.cert);
+                var chainPath = pathHelper.certificatesPath(options, opts.subject, fileNames.chain);
+                var fullchainPath = pathHelper.certificatesPath(options, opts.subject, fileNames.fullchain);
+                var bundlePath = pathHelper.certificatesPath(options, opts.subject, fileNames.bundle);
 
                 var fullchainPem = [pems.cert, pems.chain].join('\n'); // for Apache, Nginx, etc
                 var bundlePem = [pems.privkey, pems.cert, pems.chain].join('\n'); // for HAProxy
@@ -192,7 +194,7 @@ module.exports.create = (createOptions) => {
                 var id = opts.account.id || opts.email || 'single-user';
                 console.log('accounts.checkKeypair for', id);
 
-                key = accountsPath(options, id)
+                key = pathHelper.accountsPath(options, id)
 
                 return s3.getObject({ Key: key, Bucket: options.bucketName }).promise().then((data) => {
                     console.log('Successfully retrieved account keypair.');
@@ -211,7 +213,7 @@ module.exports.create = (createOptions) => {
                 console.log('accounts.setKeypair for', opts.account);
 
                 var id = opts.account.id || opts.email || 'single-user';
-                key = accountsPath(options, id)
+                key = pathHelper.accountsPath(options, id)
 
                 var body = JSON.stringify({
                     privateKeyPem: opts.keypair.privateKeyPem // string PEM
@@ -235,20 +237,4 @@ module.exports.create = (createOptions) => {
 
     return handlers;
 
-}
-
-const certificatesPath = (options, id, fileName) => {
-    var filePath = path.join(options.configDir, 'live', tameWild(id), fileName);
-    console.log('filePath:', filePath);
-    return filePath;
-}
-
-const accountsPath = (options, id) => {
-    var filePath = path.join(options.configDir, options.accountsDir, tameWild(id) + '.json');
-    console.log('filePath:', filePath);
-    return filePath;
-}
-
-const tameWild = (wild) => {
-    return wild.replace(/\*/g, '_');
 }
