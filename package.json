@@ -1,0 +1,28 @@
+{
+  "name": "greenlock-storage-s3",
+  "version": "1.0.0",
+  "description": "S3 backed storage strategy for greenlock-express.js (and greenlock.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cderche/greenlock-storage-s3.git"
+  },
+  "keywords": [
+    "aws",
+    "s3",
+    "greenlock",
+    "greenlock-express",
+    "express.js",
+    "storage",
+    "letsencrypt"
+  ],
+  "author": "Cyrille Derche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cderche/greenlock-storage-s3/issues"
+  },
+  "homepage": "https://github.com/cderche/greenlock-storage-s3#readme"
+}
