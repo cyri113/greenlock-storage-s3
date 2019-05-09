@@ -10,7 +10,7 @@ jobs:
       - run: npm run coverage
       - run: npm run clean
       - store_artifacts:
-          path: .nyc_output
+          path: ./coverage
 
 workflows:
   version: 2
