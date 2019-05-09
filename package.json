@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node ./test.js",
     "clean": "node ./clean.js",
-    "coverage": "nyc --reporter=lcovonly --report-dir=./coverage npm run test | codacy-coverage"
+    "coverage": "nyc --reporter=lcovonly --report-dir=./coverage npm run test",
+    "codacy": "cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
