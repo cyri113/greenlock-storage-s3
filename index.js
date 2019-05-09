@@ -65,7 +65,7 @@ module.exports.create = (createOptions) => {
                 return require("./lib/accounts/set").set(opts, options, s3);
             }
         }
-    }
+    };
 
     return handlers;
 
