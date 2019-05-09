@@ -30,7 +30,7 @@ s3.listObjects({ Bucket: bucketName }).promise().then((data) => {
 
     for (let i = 0; i < data.Contents.length; i++) {
         objectKeys.push({
-            Key: data.Contents[i].Key
+            Key: data.Contents[parseInt(i)].Key
         });
     }
 
