@@ -5,11 +5,22 @@ jobs:
       - image: circleci/node:10.13
     steps:
       - checkout
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            # download test reporter as a static binary
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       - run: npm install
+      - run:
+          name: Notify Code Climate of a pending test report using `before-build`
+          command: ./cc-test-reporter before-build
       - run: npm run clean
       - run: npm run coverage
-      - run: npm run codacy
       - run: npm run clean
+      - run:
+          name: Upload test report to Code Climate using `after-build`
+          command: ./cc-test-reporter after-build --exit-code $?
       - store_artifacts:
           path: ./coverage
 
