@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "node ./test.js",
-    "clean": "node ./clean.js"
+    "clean": "node ./clean.js",
+    "coverage": "nyc --reporter=lcovonly --report-dir=./coverage npm run test",
+    "codacy": "cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -28,10 +30,12 @@
   "homepage": "https://github.com/cderche/greenlock-storage-s3#readme",
   "dependencies": {
     "aws-sdk": "^2.451.0",
-    "bluebird": "^3.5.4"
+    "bluebird": "^3.5.4",
+    "codacy-coverage": "^3.4.0"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
-    "greenlock-store-test": "^3.0.2"
+    "greenlock-store-test": "^3.0.2",
+    "nyc": "^14.1.0"
   }
 }

@@ -7,8 +7,11 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run clean
-      - run: npm run test
+      - run: npm run coverage
+      - run: npm run codacy
       - run: npm run clean
+      - store_artifacts:
+          path: ./coverage
 
 workflows:
   version: 2
