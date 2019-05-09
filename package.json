@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node ./test.js",
-    "clean": "node ./clean.js"
+    "clean": "node ./clean.js",
+    "coverage": "istanbul cover ./test.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,8 @@
   "homepage": "https://github.com/cderche/greenlock-storage-s3#readme",
   "dependencies": {
     "aws-sdk": "^2.451.0",
-    "bluebird": "^3.5.4"
+    "bluebird": "^3.5.4",
+    "codacy-coverage": "^3.4.0"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
