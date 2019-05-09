@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node ./test.js",
     "clean": "node ./clean.js",
-    "coverage": "istanbul cover ./test.js"
+    "coverage": "nyc npm run test | codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
-    "greenlock-store-test": "^3.0.2"
+    "greenlock-store-test": "^3.0.2",
+    "nyc": "^14.1.0"
   }
 }
