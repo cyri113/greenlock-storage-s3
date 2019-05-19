@@ -23,7 +23,7 @@ You will need a s3 bucket and the corresponding credentials.
 let store = require('greenlock-storage-s3').create({
     accessKeyId: accessKeyId                // Replace with your accessKeyId
     , secretAccessKey: secretAccessKey      // Replace with your secretAccessKey
-    , regionName: regionName                // Replace with your regionName
+    , bucketRegion: regionName              // Replace with your regionName
     , bucketName: bucketName                // Replace with your bucketName
     , configDir: 'acme/'                    // Recommended
     , accountsDir: 'accounts/'              // Recommended
