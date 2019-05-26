@@ -23,7 +23,7 @@ You will need a s3 bucket and the corresponding credentials.
 let store = require('greenlock-storage-s3').create({
     accessKeyId: accessKeyId                // Replace with your accessKeyId
     , secretAccessKey: secretAccessKey      // Replace with your secretAccessKey
-    , bucketRegion: regionName              // Replace with your regionName
+    , bucketRegion: bucketRegion            // Replace with your bucketRegion
     , bucketName: bucketName                // Replace with your bucketName
     , configDir: 'acme/'                    // Recommended
     , accountsDir: 'accounts/'              // Recommended
@@ -51,11 +51,11 @@ To run the tests yourself, create a `.env` file with the following
 // .env file
 AWS_ACCESS_KEY_ID=abc           // Replace with your accessKeyId
 AWS_SECRET_ACCESS_KEY=abc       // Replace with your secretAccessKey
-AWS_BUCKET_REGION=abc           // Replace with your regionName
+AWS_BUCKET_REGION=abc           // Replace with your bucketRegion
 AWS_BUCKET_NAME=abc             // Replace with your bucketName
 ```
 
-Run the following command: 
+Run the following command:
 ```console
 $ npm run clean && npm run test && npm run clean
 ```
