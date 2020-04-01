@@ -41,6 +41,8 @@ var greenlock = Greenlock.create({
 
 ```
 
+If using credentials from Environment variables, the shared credentials file, the ECS credentials provider (if applicable), or loaded from AWS IAM using the credentials provider of the Amazon EC2 instance (if configured in the instance metadata), omit the `accessKeyId` and `secretAccessKey`.
+
 ## Testing
 
 The strategy is tested against the [greenlock-store-test](https://git.coolaj86.com/coolaj86/greenlock-store-test.js)
