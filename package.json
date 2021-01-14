@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/cderche/greenlock-storage-s3#readme",
   "dependencies": {
-    "aws-sdk": "^2.451.0",
+    "aws-sdk": "^2.814.0",
     "bluebird": "^3.5.4"
   },
   "devDependencies": {
